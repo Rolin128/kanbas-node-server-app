@@ -9,7 +9,7 @@ import ModuleRoutes from "./Kanbas/Modules/routes.js";
 import "dotenv/config";
 import AssignmentRoutes from "./Kanbas/Assignments/routes.js";
 import EnrollmentRoutes from "./Kanbas/Enrollments/routes.js";
-const app = express();
+const app = express()
 //注意三个app.use的顺序
 app.use(
     cors({
@@ -40,5 +40,5 @@ Hello(app);
 Lab5(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
-EnrollmentRoutes(app); 
+EnrollmentRoutes(app);
 app.listen(process.env.PORT || 4000);
