@@ -14,7 +14,7 @@ import "dotenv/config";
 const CONNECTION_STRING = process.env.MONGO_CONNECTION_STRING || "mongodb://127.0.0.1:27017/kanbas"
 // mongoose.connect(CONNECTION_STRING);
 // 尝试连接到 MongoDB 并记录连接状态
-mongoose.connect(CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(CONNECTION_STRING)
     .then(() => {
         console.log('Successfully connected to MongoDB');
     })
@@ -53,7 +53,4 @@ Lab5(app);
 ModuleRoutes(app);
 AssignmentRoutes(app);
 EnrollmentRoutes(app);
-// app.listen(process.env.PORT || 4000);
-app.listen(process.env.PORT || 4000, () => {
-    console.log(`Server is running on port ${process.env.PORT || 4000}`);
-});
+app.listen(process.env.PORT || 4000);
