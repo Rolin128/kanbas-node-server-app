@@ -6,7 +6,7 @@ export function findModulesForCourse(courseId) {
 }
 
 export function createModule(module) {
-    delete module._id
+    // delete module._id
     return model.create(module);
 }
 

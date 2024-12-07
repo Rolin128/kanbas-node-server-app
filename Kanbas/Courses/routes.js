@@ -24,6 +24,10 @@ export default function CourseRoutes(app) {
     //TODO status是啥
     app.delete("/api/courses/:courseId", async (req, res) => {
         const { courseId } = req.params;
+        const currentUser = req.session["currentUser"];
+        if (currentUser) {
+            await enrollmentsDao.unenrollUserFromCourse(currentUser._id, courseId);  //自动unenrolled即将删除的课程
+        }
         const status = await dao.deleteCourse(courseId);
         res.send(status);
     });
@@ -45,7 +49,7 @@ export default function CourseRoutes(app) {
         res.json(modules);
     });
     //add new model
-    app.post("/api/courses/:courseId/modules", async (req, res) => {
+    app.post("/api/courses/:courseId/modules/addNewModel", async (req, res) => {
         const { courseId } = req.params;
         const module = {
             ...req.body,
